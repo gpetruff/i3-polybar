@@ -28,14 +28,14 @@ font pango:  Roboto  Bold 0
 #Autostar Apps;
 exec setxkbmap br
 
+exec /usr/bin/compton
 exec /usr/bin/nm-applet
 exec /usr/bin/blueman-applet
 exec /usr/bin/cerebro
+exec /usr/bin/nitrogen --restore
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-#exec /usr/bin/wicd
-#exec /usr/bin/synapse
 #exec --no-startup-id synclient VertEdgeScroll=1 TapButton1=1 TapButton2=1 TapButton3=1
 
 #How to solve the Mouse issue with xinput (First for touch click and second for Natural Scrolling)
