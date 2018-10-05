@@ -25,7 +25,8 @@ alert = #bd2c40
 
 [bar/example]
 #monitor = ${env:MONITOR:HDMI-1}
-monitor = ${env:MONITOR:LVDS-1}
+#monitor = ${env:MONITOR:LVDS-1}
+monitor = ${env:MONITOR:Virtual1}
 width = 100%
 height = 24
 ;offset-x = 1%
@@ -54,13 +55,14 @@ module-margin-right = 2
 ; font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 ; font-2 = siji:pixelsize=10;1
 
-font-0 = "Roboto:size=9:weight=bold;2"
+font-0 = "Google Sans :size=8:weight=bold;0"
+;font-0 = "Roboto:size=9:weight=bold;0"
 font-1 = "Noto Sans:size=11;1"
 font-2 = "Tamsyn:pixelsize=12;0"
 
 modules-left = bspwm i3 xwindow
 modules-center = 
-modules-right = filesystem xbacklight volume memory cpu wireless wired battery temperature date powermenu
+modules-right = filesystem  memory cpu  wireless wired battery temperature date powermenu
 
 #MODULES REMOVED FOR LACK OF NEED = xkeyboard
 
@@ -265,14 +267,40 @@ format-underline = #4bffdc
 #label = %percentage_used%%
 label = RAM %gb_used%/%gb_total%
 
+
+[module/internal-network]
+type = internal/network
+interface = ens38
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = #9f00f9
+#label-connected =WiFi: %essid%
+label-connected = Host-only: %local_ip%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground-alt}
+
+
 [module/wireless]
 type = internal/network
-interface = wlp3s0
+interface = ens37
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
-label-connected =WiFi: %essid%
+#label-connected =WiFi: %essid%
+label-connected =Bridged: %local_ip%
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
@@ -289,13 +317,14 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/wired]
 type = internal/network
-interface = enp2s0
+interface = ens33
 interval = 3.0
 
 format-connected-underline = #55aa55
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
+#label-connected = %local_ip%
+label-connected = NAT: %local_ip%
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
