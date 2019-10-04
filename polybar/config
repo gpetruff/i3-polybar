@@ -1,19 +1,20 @@
-;=====================================================
-;
-;   To learn more about how to configure Polybar
-;   go to https://github.com/jaagr/polybar
-;
-;   The README contains alot of information
-;
-;=====================================================
+#=====================================================
+#
+#   To learn more about how to configure Polybar
+#   go to https://github.com/jaagr/polybar
+#
+#   The README contains alot of information
+#
+#=====================================================
 
 [colors]
-;background = ${xrdb:color0:#222}
+#background = ${xrdb:color0:#222}
 #background = #222
 background = #000
-#background = #992f343f # Transparent mode 
+#Transparent mode 
+#background = #992f343f 
 background-alt = #444
-;foreground = ${xrdb:color7:#222}
+#foreground = ${xrdb:color7:#222}
 foreground = #FFF
 foreground-alt = #555
 #primary = #ffb52a
@@ -25,13 +26,15 @@ alert = #bd2c40
 
 [bar/example]
 #monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:VGA-1}
+#monitor = ${env:MONITOR:DP-1}
 #monitor = ${env:MONITOR:LVDS-1}
-monitor = ${env:MONITOR:Virtual1}
+#monitor = ${env:MONITOR:Virtual1}
 width = 100%
 height = 24
-;offset-x = 1%
-;offset-y = 1%
-;radius = 6.0
+#offset-x = 1%
+#offset-y = 1%
+#radius = 6.0
 fixed-center = false
 
 
@@ -41,7 +44,7 @@ foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 
-;border-size = 4 #Parameter to use when you are not using compton
+#border-size = 4 #Parameter to use when you are not using compton
 border-size = 0 
 border-color = #00000000
 
@@ -51,37 +54,37 @@ padding-right = 0
 module-margin-left = 1
 module-margin-right = 2
 
-; font-0 = fixed:pixelsize=10;1
-; font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-; font-2 = siji:pixelsize=10;1
+# font-0 = fixed:pixelsize=10#1
+# font-1 = unifont:fontformat=truetype:size=8:antialias=false#0
+# font-2 = siji:pixelsize=10#1
 
 font-0 = "Google Sans :size=8:weight=bold;0"
-;font-0 = "Roboto:size=9:weight=bold;0"
+#font-0 = "Roboto:size=9:weight=bold;0"
 font-1 = "Noto Sans:size=11;1"
 font-2 = "Tamsyn:pixelsize=12;0"
 
 modules-left = bspwm i3 xwindow
 modules-center = 
-modules-right = filesystem  memory cpu  wireless wired battery temperature date powermenu
+modules-right = filesystem  memory cpu  wireless wired battery temperature powermenu date 
 
 #MODULES REMOVED FOR LACK OF NEED = xkeyboard
 
 tray-position = right
-;tray-padding = 2
+#tray-padding = 2
 tray-padding = 0 
-;tray-transparent = true
-;tray-background = #0063ff
+#tray-transparent = true
+#tray-background = #0063ff
 
-;wm-restack = bspwm
-;wm-restack = i3
+#wm-restack = bspwm
+#wm-restack = i3
 
-;override-redirect = true
+#override-redirect = true
 
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
+#scroll-up = bspwm-desknext
+#scroll-down = bspwm-deskprev
 
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
+#scroll-up = i3wm-wsnext
+#scroll-down = i3wm-wsprev
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -116,6 +119,7 @@ interval = 25
 
 mount-0 = /
 mount-1 =/tmp
+mount-2 = /home
 
 #label-mounted = %mountpoint%: %percentage_free%% of %total%
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
@@ -125,27 +129,27 @@ label-unmounted-foreground = ${colors.foreground-alt}
 [module/backlight]
 type = internal/backlight
 
-; Use the following command to list available cards:
-; $ ls -1 /sys/class/backlight/
+# Use the following command to list available cards:
+# $ ls -1 /sys/class/backlight/
 card = intel_backlight
-; Available tags:
-;   <label> (default)
-;   <ramp>
-;   <bar>
+# Available tags:
+#   <label> (default)
+#   <ramp>
+#   <bar>
 format = <label>
 
-; Available tokens:
-;   %percentage% (default)
+# Available tokens:
+#   %percentage% (default)
 label = %percentage%%
 
-; Only applies if <ramp> is used
+# Only applies if <ramp> is used
 ramp-0 = 🌕
 ramp-1 = 🌔
 ramp-2 = 🌓
 ramp-3 = 🌒
 ramp-4 = 🌑
 
-; Only applies if <bar> is used
+# Only applies if <bar> is used
 bar-width = 10
 bar-indicator = |
 bar-fill = ─
@@ -179,29 +183,29 @@ wrapping-scroll = false
 pin-workspaces = true
 strip-wsnumbers = true
 
-; Only show workspaces on the same output as the bar
-;pin-workspaces = true
+# Only show workspaces on the same output as the bar
+#pin-workspaces = true
 label-mode-padding = 2
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
-; focused = Active workspace on focused monitor
+# focused = Active workspace on focused monitor
 label-focused = %index%
 label-focused-background = ${module/bspwm.label-focused-background}
 label-focused-underline = ${module/bspwm.label-focused-underline}
 label-focused-padding = ${module/bspwm.label-focused-padding}
 
-; unfocused = Inactive workspace on any monitor
+# unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
 label-unfocused-padding = ${module/bspwm.label-occupied-padding}
 
-; visible = Active workspace on unfocused monitor
+# visible = Active workspace on unfocused monitor
 label-visible = %index%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
-; urgent = Workspace with urgency hint set
+# urgent = Workspace with urgency hint set
 label-urgent = %index%
 label-urgent-background = ${module/bspwm.label-urgent-background}
 label-urgent-padding = ${module/bspwm.label-urgent-padding}
@@ -268,21 +272,21 @@ format-underline = #4bffdc
 label = RAM %gb_used%/%gb_total%
 
 
-[module/internal-network]
+[module/phone]
 type = internal/network
-interface = ens38
+#interface = eno1
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f00f9
 #label-connected =WiFi: %essid%
-label-connected = Host-only: %local_ip%
+label-connected = USB Tethering: %local_ip%
 
 format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+#format-disconnected = <label-disconnected>
+#format-disconnected-underline = ${self.format-connected-underline}
+#label-disconnected = %ifname% disconnected
+#label-disconnected-foreground = ${colors.foreground-alt}
 
 ramp-signal-0 = 
 ramp-signal-1 = 
@@ -300,13 +304,13 @@ interval = 3.0
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
 #label-connected =WiFi: %essid%
-label-connected =Bridged: %local_ip%
+label-connected = Wi-Fi: %local_ip%
 
 format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+#format-disconnected = <label-disconnected>
+#format-disconnected-underline = ${self.format-connected-underline}
+#label-disconnected = %ifname% disconnected
+#label-disconnected-foreground = ${colors.foreground-alt}
 
 ramp-signal-0 = 
 ramp-signal-1 = 
@@ -317,7 +321,9 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/wired]
 type = internal/network
-interface = ens33
+#interface = ens33
+interface = eno1
+#interface = enp0s25
 interval = 3.0
 
 format-connected-underline = #55aa55
@@ -327,22 +333,22 @@ format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = NAT: %local_ip%
 
 format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+#format-disconnected = <label-disconnected>
+#format-disconnected-underline = ${self.format-connected-underline}
+#label-disconnected = %ifname% disconnected
+#label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/date]
 type = internal/date
 interval = 1
 
-; date =
-; date-alt = " %Y-%m-%d"
+# date =
+# date-alt = " %Y-%m-%d"
 date = " %d-%m-%Y "
 date-alt = 
 
-; time = %H:%M
-; time-alt = %H:%M:%S
+# time = %H:%M
+# time-alt = %H:%M:%S
 
 time-alt = %H:%M
 time = %H:%M:%S
@@ -463,17 +469,17 @@ menu-2-1-exec = menu-open-0
 menu-3-0 = suspend
 menu-3-0-exec = menu-open-0
 menu-3-1 = reboot
-menu-3-1-exec = i3lock -c 000000 ; systemctl suspend
+menu-3-1-exec = i3lock -c 000000 # systemctl suspend
 
 [settings]
 screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
+#compositing-background = xor
+#compositing-background = screen
+#compositing-foreground = source
+#compositing-border = over
 
 [global/wm]
 margin-top = 5
 margin-bottom = 5
 
-; vim:ft=dosini
+# vim:ft=dosini
